@@ -70,12 +70,6 @@ lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
      * source codes: https://github.com/lvgl/lvgl/tree/e7f88efa5853128bf871dde335c0ca8da9eb7731/examples
      */
     //  lv_example_btn_1();
-
-lv_obj_t *label = lv_label_create(lv_scr_act());
-
-lv_label_set_text(label, "AIRDESK STARTING...");
-
-lv_obj_center(label);
  
     /**
      * Or try out a demo.
