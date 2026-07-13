@@ -32,9 +32,10 @@ jobs:
 
 
     - name: Install libraries
-      run: |
-        arduino-cli lib install "LVGL"
-        arduino-cli lib install "ESP32_Display_Panel"
+   run: |
+    arduino-cli lib install "ESP32_Display_Panel"
+    arduino-cli lib install "ESP32_IO_Expander"
+    arduino-cli lib install "lvgl@8.3.11"
 
 
     - name: Compile AirDesk
