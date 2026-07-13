@@ -11,43 +11,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Install Arduino CLI
+        uses: arduino/setup-arduino-cli@v2
 
+      - name: Install ESP32 platform
+        run: |
+          arduino-cli core update-index
+          arduino-cli core install esp32:esp32
 
-    - name: Install Arduino CLI
-      uses: arduino/setup-arduino-cli@v2
+      - name: Install libraries
+        run: |
+          arduino-cli lib install "ESP32_Display_Panel"
+          arduino-cli lib install "ESP32_IO_Expander"
+          arduino-cli lib install "lvgl@8.3.11"
 
+      - name: Compile AirDesk
+        run: |
+          arduino-cli compile \
+            --fqbn esp32:esp32:esp32s3 \
+            --output-dir build \
+            AirDesk/AirDesk.ino
 
-    - name: Configure Arduino CLI
-      run: |
-        arduino-cli config init
-
-
-    - name: Install ESP32 platform
-      run: |
-        arduino-cli core update-index
-        arduino-cli core install esp32:esp32
-
-
-    - name: Install libraries
-   run: |
-    arduino-cli lib install "ESP32_Display_Panel"
-    arduino-cli lib install "ESP32_IO_Expander"
-    arduino-cli lib install "lvgl@8.3.11"
-
-
-    - name: Compile AirDesk
-      run: |
-        arduino-cli compile \
-          --fqbn esp32:esp32:esp32s3 \
-          --output-dir build \
-          AirDesk/AirDesk.ino
-
-
-    - name: Upload firmware
-      uses: actions/upload-artifact@v4
-      with:
-        name: AirDesk-firmware
-        path: build
+      - name: Upload firmware artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: AirDesk-firmware
+          path: build
