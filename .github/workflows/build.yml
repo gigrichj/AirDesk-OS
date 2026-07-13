@@ -42,7 +42,7 @@ jobs:
         arduino-cli compile \
           --fqbn esp32:esp32:esp32s3 \
           --output-dir build \
-          firmware/AirDesk.ino
+          AirDesk/AirDesk.ino
 
 
     - name: Upload firmware
