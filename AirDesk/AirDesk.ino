@@ -74,6 +74,12 @@ void setup()
      */
     //  lv_example_btn_1();
 
+lv_obj_t *label = lv_label_create(lv_scr_act());
+
+lv_label_set_text(label, "AIRDESK STARTING...");
+
+lv_obj_center(label);
+ 
     /**
      * Or try out a demo.
      * Don't forget to uncomment header and enable the demos in `lv_conf.h`. E.g. `LV_USE_DEMO_WIDGETS`
