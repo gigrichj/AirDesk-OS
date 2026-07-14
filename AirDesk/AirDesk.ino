@@ -48,7 +48,11 @@ if (!board->begin()) {
 }
 
     Serial.println("Initializing LVGL");
-    lvgl_port_init(board->getLCD(), board->getTouch());
+if (!lvgl_port_init(board->getLCD(), board->getTouch())) {
+    while (true) {
+        delay(1000);
+    }
+}
 
     Serial.println("Creating UI");
     /* Lock the mutex due to the LVGL APIs are not thread-safe */
