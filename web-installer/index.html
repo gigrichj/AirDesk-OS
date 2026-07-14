@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Big Plane Radar Web Installer</title>
+    <script
+      type="module"
+      src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"
+    ></script>
+    <style>
+      :root {
+        color-scheme: dark;
+        --esp-tools-button-color: #44ff7a;
+        --esp-tools-button-text-color: #031108;
+        --esp-tools-button-border-radius: 6px;
+      }
+
+      body {
+        margin: 32px;
+        max-width: 720px;
+        background: #010605;
+        color: #e6ffeb;
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.5;
+      }
+
+      h1 {
+        margin-bottom: 8px;
+        color: #44ff7a;
+      }
+
+      code {
+        color: #44ff7a;
+      }
+
+      .panel {
+        margin-top: 24px;
+        padding: 18px;
+        border: 1px solid #153725;
+        border-radius: 8px;
+        background: #031108;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Big Plane Radar</h1>
+    <p>
+      Browser installer for Waveshare ESP32-S3-Touch-LCD-7. Use a Chromium-based
+      browser with Web Serial support. Set the board switch to <code>UART1</code>
+      and plug USB into the <code>UART1</code> port before connecting.
+    </p>
+    <div class="panel">
+      <esp-web-install-button manifest="./manifest.json">
+        <button slot="activate">Install Big Plane Radar</button>
+        <span slot="unsupported">
+          Web Serial is not available. Use Chrome, Edge, or another Chromium-based
+          desktop browser over HTTPS.
+        </span>
+      </esp-web-install-button>
+    </div>
+  </body>
+</html>
