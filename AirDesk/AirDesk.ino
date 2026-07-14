@@ -41,7 +41,11 @@ void setup()
     }
 #endif
 #endif
-    assert(board->begin());
+if (!board->begin()) {
+    while (true) {
+        delay(1000);
+    }
+}
 
     Serial.println("Initializing LVGL");
     lvgl_port_init(board->getLCD(), board->getTouch());
